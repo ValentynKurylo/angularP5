@@ -1,0 +1,8 @@
+<form [formGroup] = 'myForm' (ngSubmit)="add()">
+  <input [formControl]="model" placeholder="model"><br/>
+  <input [formControl]="price" type="number" placeholder="price"><br/>
+  <input [formControl]="year" type="number" placeholder="year"><br/>
+  <button>Add</button>
+</form>
+
+<app-car *ngFor="let car of cars" [car]="car"></app-car>
