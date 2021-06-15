@@ -1,9 +1,8 @@
 <form [formGroup]="myForm" (ngSubmit)="enter()">
   <input [formControl]="login" placeholder="login"><br/>
-  <div *ngIf="login.errors?.err">login is not valid</div>
   <input [formControl]="password" placeholder="password" type="password"><br/>
   <button>Login</button>
 </form>
-<div *ngIf="bool">
+<div>
   <a routerLink="cars">Show Cars</a><br/>
 </div>

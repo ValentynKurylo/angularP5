@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {CarService} from "../../car/services/car.service";
+import {Token} from "../../car/model/token";
 
 @Component({
   selector: 'app-login',
@@ -8,14 +10,13 @@ import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/form
 })
 export class LoginComponent implements OnInit {
 
-  bool: boolean = false
-  login = new FormControl('',[
+  token: any
+  login = new FormControl('',[]
 
-    this.loginValodator]
     )
   password = new FormControl()
 
-  constructor() { }
+  constructor(private carService: CarService) { }
 
   ngOnInit(): void {
   }
@@ -24,17 +25,9 @@ export class LoginComponent implements OnInit {
     password: this.password
   })
   enter(){
-    if(!this.login.errors) {
-      this.bool = true
-    }
-    console.log(this.bool);
-  }
-  loginValodator(input: AbstractControl){
-    if(input.value.includes('admin@gmail.com')){
-      return null
-    }
-    else {
-      return {err: 'login is no valid'}
-    }
+    let Login = {email: this.login.value, password: this.password.value}
+     this.carService.Auth(Login).subscribe(value => {
+      this.token = value})
+
   }
 }
