@@ -31,8 +31,8 @@ export class CarsComponent implements OnInit {
   })
 
   add(){
-    let car = {id: this.cars.length + 16,model: this.model.value, price: this.price.value, year: this.price.value}
+    let car = {model: this.model.value, price: this.price.value, year: this.price.value}
     console.log(car);
-    this.carService.postCar(car)
+    this.carService.postCar(car).subscribe()
   }
 }

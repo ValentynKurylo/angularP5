@@ -6,17 +6,26 @@ import { CarsComponent } from './car/components/cars/cars.component';
 import { CarComponent } from './car/components/car/car.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { LoginComponent } from './login/login/login.component';
+import {RouterModule} from "@angular/router";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
-    CarComponent
+    CarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      {path: 'login', component: LoginComponent},
+      {path: 'login/cars', component: CarsComponent},
+    ])
+
   ],
   providers: [],
   bootstrap: [AppComponent]

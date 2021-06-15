@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Car} from "../model/car";
+import {newCar} from "../model/newCar";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,10 @@ export class CarService {
   getCars():Observable<Car[]>{
     return this.httpClint.get<Car[]>(this.url)
   }
-  postCar(car: Car): void{
-   this.httpClint.post(this.url, car)
+  postCar(car: newCar):Observable<newCar>{
+  return this.httpClint.post<newCar>(this.url, car)
+  }
+  deleteCar(id: number):Observable<Car>{
+    return this.httpClint.delete<Car>(this.url + '/' + id)
   }
 }
