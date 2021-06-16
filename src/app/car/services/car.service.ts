@@ -27,6 +27,6 @@ export class CarService {
     return this.httpClint.delete<Car>(this.url + '/' + id)
   }
   Auth(Login: any){
-    return this.httpClint.post<Restaurant>(this.urlA, Login)
+    return this.httpClint.post(this.urlA, Login)
   }
 }
